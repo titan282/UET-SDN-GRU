@@ -1,0 +1,14 @@
+1. chay bang moi truong venv trong thu muc kltn-venv 
+source python_venv/bin/activate
+
+2. cd vao pox chay binh thuong module l3_mySwitch
+python3 ./pox.py forwarding.l3_mySwitch
+
+3. tao topo bang moi truong binh thuong 
+sudo mn --switch ovsk --topo tree,depth=2,fanout=4 --controller=remote,ip=127.0.0.1,port=6633
+
+Chay 1 may 
+python3 traffic.py -s 2 -e 63 
+ 1 may 
+ hping3 -S 10.0.0.5 -p 0
+hping3 10.0.0.4 -c 10000 --flood --rand-source -w 64 -p 0 -S -d 120
